@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- bootstrap -->
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+<!-- end bootstrap -->
+
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+	integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+	crossorigin="anonymous">
+<title>Guardar Docente</title>
+</head>
+<body>
+
+	<div class="container">
+		<br>
+		<form>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="nombre">Nombre: </label> <input type="text"
+							class="form-control" id="nombre"
+							placeholder="Ingrese nombre del alumno">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="apellido">Apellidos: </label> <input type="text"
+							class="form-control" id="apellido"
+							placeholder="Ingrese apellidos del Alumno">
+					</div>
+
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="dni">DNI: </label> <input type="text"
+							class="form-control" id="dni"
+							placeholder="Ingrese el DNI del docente">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="telefono">Telefono: </label> <input type="text"
+							class="form-control" id="telefono"
+							placeholder="Ingrese el numero de telefono">
+					</div>
+
+				</div>
+			</div>
+		</form>
+		<button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
+
+	</div>
+
+
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script type="text/javascript" th:src="@{/js/savedocente.js}"></script>
+</body>
+</html>

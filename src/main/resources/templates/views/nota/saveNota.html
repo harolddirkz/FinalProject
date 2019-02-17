@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- bootstrap -->
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+<!-- end bootstrap -->
+
+<!-- css datatable -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+<!-- fin css datatable -->
+
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+	integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+	crossorigin="anonymous">
+<title>Registrar Nota</title>
+</head>
+<body>
+
+	<div class="container">
+		<br>
+		<form>
+			<div class="row">
+				<div class="col-md-6">
+					<label for="sigla">Nombre Alumno:</label>
+					<div class="input-group mb-3">
+						<input type="text" id="inputalumno" class="form-control"
+							placeholder="Elija Alumno..." disabled="disabled" /> <input
+							type="hidden" id="idalumno" class="form-control" />
+						<div class="input-group-append">
+							<button class="btn btn-outline-secondary" type="button"
+								data-toggle="modal" data-target="#modalAlumnos">
+								<i class="fas fa-search"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="idcurso">Curso</label> <select class="form-control"
+							id="idcurso">
+							<option value="0">--Elija una opción--</option>
+							<option value="1">Inglés</option>
+							<option value="2">Quechua</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="modalidad">Modalidad</label> <select
+							class="form-control" id="modalidad">
+							<option value="0">--Elija una opción--</option>
+							<option value="Exoneración">Exoneración</option>
+							<option value="Suficiencia">Suficiencia</option>
+							<option value="Regular">Regular</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="anio">Año</label> <select class="form-control"
+							id="anio">
+							<option value="0">--Elija una opción--</option>
+							<option value="2018">2018</option>
+							<option value="2019">2019</option>
+							<option value="2020">2020</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</form>
+		<button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
+
+	</div>
+
+
+	<!-- inicio modal -->
+	<div class="modal" id="modalAlumnos" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Buscar Alumno</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<table id="tableAlumno" class="table table-striped table-bordered"
+						style="width: 100%">
+						<thead class="thead-light">
+							<tr>
+								<th scope="col">ID</th>
+								<th scope="col">Nombres</th>
+								<th scope="col">Apellidos</th>
+								<th scope="col"># DNI</th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="alumno : ${listaalumnos}">
+								<td class="classidalumno" th:text="${alumno.idalumno}"></td>
+								<td class="classnombre" th:text="${alumno.nombre}"></td>
+								<td class="classapellido" th:text="${alumno.apellido}"></td>
+								<td th:text="${alumno.dni}"></td>
+								<td><button type="button"
+										class="btn btn-success classelegir">
+										Elegir <i class="fas fa-check"></i>
+									</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="closeModal01" class="btn btn-danger"
+						data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- fin modal -->
+
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<!-- datatable js -->
+	<script
+		src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script
+		src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+	<!-- fin datatable js -->
+
+	<script type="text/javascript" th:src="@{/js/savenota.js}"></script>
+</body>
+</html>
